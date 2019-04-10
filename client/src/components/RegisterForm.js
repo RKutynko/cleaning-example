@@ -4,25 +4,30 @@ import * as Yup from "yup";
 
 export default ({ onSubmit }) => (
 	<Formik
-		initialValues={{ login: "", password: "" }}
+		initialValues={{
+			login: "",
+			password: "",
+			name: "",
+			confirmPassword: ""
+		}}
 		validationSchema={Yup.object().shape({
+			name: Yup.string().required("Name is required"),
 			login: Yup.string()
 				.required("Login is required")
 				.email("Login must be email address"),
 			password: Yup.string().required("Password is required"),
 			confirmPassword: Yup.string()
 				.required("Confirm password is required")
-				.oneOf([Yup.ref("password"), null], "Passwords must match"),
-			name: Yup.string().required("Name is required")
+				.oneOf([Yup.ref("password")], "Passwords must match")
 		})}
 		onSubmit={onSubmit}
 		render={() => (
 			<Form>
 				<div>
+					<ErrorMessage name="name" component="div" />
 					<ErrorMessage name="login" component="div" />
 					<ErrorMessage name="password" component="div" />
 					<ErrorMessage name="confirmPassword" component="div" />
-					<ErrorMessage name="name" component="div" />
 				</div>
 				<div>
 					<label htmlFor="txtName">Name</label>
