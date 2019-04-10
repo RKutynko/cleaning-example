@@ -15,7 +15,7 @@ const composeEnhancers = isProduction
 
 export const history = createBrowserHistory();
 const middlewares = [sagaMiddleware, routerMiddleware(history)];
-if (isProduction) middlewares.splice(0, 0, save());
+if (true || isProduction) middlewares.splice(0, 0, save());
 
 export default createStore(
 	combineReducers({
