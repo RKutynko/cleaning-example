@@ -5,10 +5,6 @@ AuthController.post("/login", (req, res) => {
 	res.sendStatus(200);
 });
 
-AuthController.post("/register", (req, res) => {
-	res.sendStatus(200);
-});
-
 AuthController.post("/logout", (req, res) => {
 	res.sendStatus(200);
 });

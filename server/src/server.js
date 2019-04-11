@@ -12,7 +12,10 @@ import mongoose from "mongoose";
 
 config();
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
+mongoose.connect(process.env.DATABASE_URL);
 mongoose.Promise = global.Promise;
 
 const app = express();
