@@ -12,10 +12,12 @@ import mongoose from "mongoose";
 
 config();
 
-mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL, {
+	useUnifiedTopology: true,
+	useNewUrlParser: true
+});
 mongoose.Promise = global.Promise;
 
 const app = express();
