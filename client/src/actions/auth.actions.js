@@ -4,7 +4,8 @@ export const types = {
 	LOGIN_FAILED: "LOGIN_FAILED",
 	LOGOUT: "LOGOUT",
 	LOGOUT_DONE: "LOGOUT_DONE",
-	REGISTER: "REGISTER",
+	REGISTER_AGENT: "REGISTER_AGENT",
+	REGISTER_CLIENT: "REGISTER_CLIENT",
 	REGISTER_DONE: "REGISTER_DONE",
 	REGISTER_FAILED: "REGISTER_FAILED"
 };
@@ -32,9 +33,14 @@ export const logoutDone = () => ({
 	type: types.LOGIN_DONE
 });
 
-export const register = ({ login, name, password }) => ({
-	type: types.REGISTER,
-	payload: { login, name, password }
+export const registerAgent = ({ login, name, password }) => ({
+	type: types.REGISTER_CLIENT,
+	payload: { login, name, password, role: "agent" }
+});
+
+export const registerClient = ({ login, name, password }) => ({
+	type: types.REGISTER_CLIENT,
+	payload: { login, name, password, role: "client" }
 });
 
 export const registerDone = data => ({

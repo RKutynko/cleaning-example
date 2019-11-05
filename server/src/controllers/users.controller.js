@@ -10,8 +10,15 @@ UsersController.post("/", async (req, res) => {
 	const user = {
 		email: req.body.email,
 		name: req.body.name,
-		password: req.body.password
+		password: req.body.password,
+		role: req.body.role,
+		companyId: req.body.companyId
 	};
+
+	if (user.role === "agent" && !user.companyId) {
+		res.sendStatus(400);
+		return;
+	}
 
 	const possibleDuplicate = await User.findOne({
 		email: user.email,

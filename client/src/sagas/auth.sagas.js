@@ -40,7 +40,9 @@ export function* watchLogout() {
 }
 
 export function* watchRegister() {
-	yield takeLeading(types.REGISTER, function*(action) {
+	yield takeLeading([types.REGISTER_CLIENT, types.REGISTER_AGENT], function*(
+		action
+	) {
 		try {
 			const response = yield call(
 				axios.post,
